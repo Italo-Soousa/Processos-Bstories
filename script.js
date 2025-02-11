@@ -18,7 +18,7 @@ document.getElementById("loginForm").addEventListener("submit", function(event) 
     const validUser = users.find(user => user.username === username && user.password === password);
 
     if (validUser) {
-        window.location.href = ""; // Redireciona para outra página (se necessário)
+        window.location.href = "introducao.html"; // Redireciona para outra página (se necessário)
     } else {
         errorMessage.textContent = "Usuário ou senha incorretos!";
     }
