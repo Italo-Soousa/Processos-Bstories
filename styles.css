@@ -36,7 +36,7 @@ body {
     height: 120%;
     background-color: #72373D;
     border-radius: 20%;
-    transform: translateY(-50%); /*centralizar corretamente*/
+    transform: translateY(-50%);
 }
 
 /* Estilização do container de login */
@@ -64,6 +64,7 @@ h2 {
     color: #72373D;
 }
 
+/*botão de entrar*/
 input {
     background-color: #F1ECDE;
     width: 80%;
@@ -105,3 +106,22 @@ img {
     transform: translateY(-50%);
 }
 
+@media screen and (max-width: 768px) {
+    .left, .right {
+        display: none;
+    }
+
+    .login-container {
+        width: 90%;
+        max-width: 360px;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+
+    img {
+        width: 70%;
+        max-width: 200px;
+        position: static;
+        margin-top: 22px;
+    }
+}
