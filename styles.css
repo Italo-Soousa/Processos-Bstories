@@ -57,6 +57,7 @@ body {
     left: 15%;
     top: 50%;
     transform: translateY(-50%);
+    margin: auto;
 }
 
 h2 {
@@ -106,10 +107,17 @@ img {
     transform: translateY(-50%);
 }
 
+main { 
+    min-width: 320px;
+    max-width: 800px;
+    margin: auto;
+}
+
 @media screen and (max-width: 768px) {
-    .left, .right {
-        display: none;
+    .login-container{
+        width: 100%;
     }
+    
 
     .login-container {
         width: 90%;
@@ -121,7 +129,8 @@ img {
     img {
         width: 70%;
         max-width: 200px;
-        position: static;
-        margin-top: 22px;
+        position: absolute;
+        top: 10%;
+        
     }
 }
