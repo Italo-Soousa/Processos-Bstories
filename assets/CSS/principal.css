@@ -1,0 +1,64 @@
+/* Estilização da seção de categorias */
+
+/* Remover sublinhado e ajustar estilo dos links */
+.categorias .container a {
+    text-decoration: none; /* Remove o sublinhado dos links */
+    color: inherit; /* Mantém a cor original do texto */
+}
+
+.categorias {
+    text-align: center;
+    padding: 40px 20px;
+}
+
+.categorias h2 {
+    font-size: 24px;
+    color: #72373D;
+    margin-bottom: 30px;
+}
+
+/* Ajuste do contêiner */
+.categorias .container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 30px;
+}
+
+/* Estilização de cada categoria */
+.categoria {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 180px;
+    height: 160px;
+    padding: 20px;
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+    cursor: pointer;
+    text-align: center;
+}
+
+/* Ícones Font Awesome */
+.categoria i {
+    font-size: 40px;
+    color: #72373D;
+    margin-bottom: 10px;
+}
+
+/* Texto dentro da categoria */
+.categoria p {
+    font-size: 16px;
+    font-weight: bold;
+    color: #72373D;
+    margin: 0;
+}
+
+/* Efeito ao passar o mouse */
+.categoria:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}

@@ -31,6 +31,7 @@ body {
     color: white;
     padding: 20px;
     min-height: 100vh;
+    box-shadow: 4px 0px 10px rgba(0, 0, 0, 0.2); /* Sombra na lateral direita */
 }
 
 .sidebar ul {
@@ -41,6 +42,7 @@ body {
     font-weight: bold;
     margin-top: 20px;
     margin-bottom: 10px;
+    font-size: 20px;
 }
 
 .sidebar a {
@@ -85,6 +87,52 @@ body {
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     margin-bottom: 40px;
+}
+
+/* Estilização dos links */
+.content a {
+    display: inline-block;
+    padding: 10px 15px;
+    background-color: #5B3535; /* Cor de fundo similar ao tema */
+    color: white; /* Cor do texto */
+    font-size: 18px;
+    font-weight: bold;
+    text-decoration: none;
+    border-radius: 8px; /* Bordas arredondadas */
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+/* Efeito ao passar o mouse */
+.content a:hover {
+    background-color: #72383E; /* Um tom um pouco mais claro */
+    transform: scale(1.05); /* Leve aumento no tamanho */
+    text-decoration: none;
+}
+
+.payment-options {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px; /* Aumenta o espaço entre os botões */
+    justify-content: center;
+    margin-bottom: 50px; /* Aumenta a distância da imagem */
+}
+
+.payment-options a {
+    padding: 12px 20px;
+    background-color: #5B3535;
+    color: white;
+    font-size: 18px;
+    font-weight: bold;
+    text-decoration: none;
+    border-radius: 8px;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    display: inline-block;
+    text-align: center;
+}
+
+.payment-options a:hover {
+    background-color: #72383E;
+    transform: scale(1.05);
 }
 
 /* Responsividade */
