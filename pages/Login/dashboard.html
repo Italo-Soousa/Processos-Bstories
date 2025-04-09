@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 2rem;
+        }
+        .menu {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+        .menu button {
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <h1>Bem-vindo à Dashboard</h1>
+    <div class="menu" id="menu"></div>
+
+    <script>
+        // Função para exibir o menu de acordo com a função
+        const usuario = localStorage.getItem("usuarioLogado");
+
+        const permissoes = {
+            "pks": "PontoDeVendas",
+            "patio": "Ecommerce",
+            "meca": "Administrativo",
+            "yb": "Admin"
+        };
+
+        const menu = document.getElementById("menu");
+
+        // Redirecionamento com base na função
+        function redirecionar() {
+            const funcao = permissoes[usuario];
+            if (!funcao) {
+                alert("Usuário não autenticado.");
+                window.location.href = "login.html";
+                return;
+            }
+
+            // Comentários para facilitar leitura e manutenção do código
+            // Adiciona os botões correspondentes ao tipo de usuário
+            if (funcao === "PontoDeVendas") {
+                menu.innerHTML = `
+                    <button onclick="location.href='PontoDeVendas/vendas.html'">Vendas</button>
+                    <button onclick="location.href='PontoDeVendas/estoque.html'">Estoque</button>
+                `;
+            } else if (funcao === "Ecommerce") {
+                menu.innerHTML = `
+                    <button onclick="location.href='Ecommerce/pedidos.html'">Pedidos</button>
+                    <button onclick="location.href='Ecommerce/envio.html'">Envio</button>
+                `;
+            } else if (funcao === "Administrativo") {
+                menu.innerHTML = `
+                    <button onclick="location.href='Administrativo/financeiro.html'">Financeiro</button>
+                    <button onclick="location.href='Administrativo/processos.html'">Processos</button>
+                `;
+            } else if (funcao === "Admin") {
+                menu.innerHTML = `
+                    <button onclick="location.href='PontoDeVendas/vendas.html'">Vendas (PDV)</button>
+                    <button onclick="location.href='Ecommerce/pedidos.html'">Pedidos (E-commerce)</button>
+                    <button onclick="location.href='Administrativo/financeiro.html'">Financeiro</button>
+                    <button onclick="location.href='Admin/controle_usuarios.html'">Controle de Usuários</button>
+                `;
+            }
+        }
+
+        redirecionar();
+    </script>
+</body>
+</html>
