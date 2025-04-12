@@ -24,16 +24,16 @@ document.addEventListener("DOMContentLoaded", () => {
 
             switch (user.tipo) {
                 case "vendas":
-                    window.location.href = "./pages/Home/PontoDeVendas.html";
+                    window.location.href = "pages/Home/PontoDeVendas.html";
                     break;
                 case "ecommerce":
-                    window.location.href = "./pages/Home/Ecommerce.html";
+                    window.location.href = "pages/Home/Ecommerce.html";
                     break;
                 case "admin":
-                    window.location.href = "./pages/Home/AdminTotal.html";
+                    window.location.href = "pages/Home/AdminTotal.html";
                     break;
                 case "rh":
-                    window.location.href = "./pages/Home/Administrativo.html";
+                    window.location.href = "pages/Home/Administrativo.html";
                     break;
                 default:
                     alert("Tipo de usuário não reconhecido.");
