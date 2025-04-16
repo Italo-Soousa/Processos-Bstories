@@ -117,3 +117,9 @@ section.passo-conteudo img {
 .sidebar ul li a:hover {
   text-decoration: none;
 }
+
+@media screen and (max-width: 768px) {
+  main.passo-container {
+    flex-direction: column;
+  }
+}
