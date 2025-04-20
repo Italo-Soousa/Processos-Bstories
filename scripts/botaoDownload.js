@@ -1,8 +1,18 @@
-// Primeiro código
+let deferredPrompt;
+
+function isIOS() {
+    return /iPhone|iPad|iPod/.test(navigator.userAgent) && !window.MSStream;
+}
 
 document.addEventListener('DOMContentLoaded', function () {
     const installBtn = document.querySelector('.install-btn');
     const modal = document.getElementById('install-modal');
+
+    window.addEventListener('beforeinstallprompt', (e) => {
+        console.log('beforeinstallprompt capturado');
+        e.preventDefault();
+        deferredPrompt = e;
+    });
 
     installBtn.addEventListener('click', () => {
         if (isIOS()) {
@@ -31,17 +41,9 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   });
 
-// Segundo código
-
-
 if ('serviceWorker' in navigator) {
     navigator.serviceWorker.register('../../../assets/service-worker.js')
     .then(reg => console.log('Service Worker registrado!', reg))
     .catch(err => console.log('Erro ao registrar o Service Worker', err));
+
 }
-
-// Lógica que indentifica o aparelho da pessao 
-
-function isIOS() {
-    return /iPhone|iPad|iPod/.test(navigator.userAgent) && !window.MSStream;
-  }
