@@ -47,7 +47,7 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 
 if ('serviceWorker' in navigator) {
-    navigator.serviceWorker.register('../../../scripts/service-worker.js')
+    navigator.serviceWorker.register('../../scripts/service-worker.js')
     .then(reg => console.log('Service Worker registrado!', reg))
     .catch(err => console.log('Erro ao registrar o Service Worker', err));
 }

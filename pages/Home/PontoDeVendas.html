@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="manifest" href="../../../assets/manifest.json">
+    <script src="../../../scripts/botaoDownload.js"></script>
     <link rel="stylesheet" href="../../assets/CSS/pages/introducao.css">
     <link rel="stylesheet" href="../../assets/CSS/layout/header.css">
     <link rel="stylesheet" href="../../assets/CSS/layout/footer.css">
@@ -18,12 +20,10 @@
         </div>
 
         <nav class="nav-menu">
-            <a href="#">Home</a>
-            <div class="user-icon">
-                <i class="fas fa-user-circle"></i>
-                <span>Você</span>
-            </div>
-        </nav>
+          <button class="install-btn">
+            Instalar <i class="fas fa-download"></i>
+          </button>
+      </nav>
     </header>
 
     <section class="categorias">
@@ -64,5 +64,19 @@
           </div>
       </div>
   </footer>
+
+  <div id="install-modal" class="modal">
+    <div class="modal-content">
+      <button class="close-modal" onclick="fecharModal()">×</button>
+      <h2><i class="fas fa-mobile-alt"></i> Instalar no iOS</h2>
+      <p>Para adicionar este app no seu dispositivo iOS, siga os passos:</p>
+      <ul>
+        <li><i class="fas fa-share-square"></i> <strong>Abrir o menu do navegador</strong><br><small>Toque no botão de compartilhar</small></li>
+        <li><i class="fas fa-plus-square"></i> <strong>Escolher "Adicionar à Tela de Início"</strong><br><small>Role até a opção</small></li>
+        <li><i class="fas fa-check"></i> <strong>Confirmar Instalação</strong><br><small>Toque em "Adicionar" no canto superior direito</small></li>
+      </ul>
+    </div>
+  </div>
+
 </body>
 </html>
