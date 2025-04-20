@@ -16,34 +16,38 @@ document.addEventListener('DOMContentLoaded', function () {
 
     installBtn.addEventListener('click', () => {
         if (isIOS()) {
-          modal.style.display = 'flex';
+            console.log('Dispositivo iOS detectado');
+            modal.style.display = 'flex';
         } else if (deferredPrompt) {
-          deferredPrompt.prompt();
-          deferredPrompt.userChoice.then(choiceResult => {
-            if (choiceResult.outcome === 'accepted') {
-              console.log('Usuário aceitou a instalação');
-            } else {
-              console.log('Usuário recusou a instalação');
-            }
-            deferredPrompt = null;
-          });
+            console.log('Dispositivo com suporte detectado. Mostrando prompt de instalação...');
+            deferredPrompt.prompt();
+            deferredPrompt.userChoice.then(choiceResult => {
+                if (choiceResult.outcome === 'accepted') {
+                    console.log('Usuário aceitou a instalação');
+                } else {
+                    console.log('Usuário recusou a instalação');
+                }
+                deferredPrompt = null;
+            });
+        } else {
+            console.log('beforeinstallprompt não foi disparado ou já foi usado');
+            alert('Este app não pode ser instalado agora. Tente novamente mais tarde ou use outro navegador.');
         }
-      });
+    });
 
     window.fecharModal = function () {
-      modal.style.display = 'none';
+        modal.style.display = 'none';
     }
 
     window.addEventListener('click', function (e) {
-      if (e.target === modal) {
-        fecharModal();
-      }
+        if (e.target === modal) {
+            fecharModal();
+        }
     });
-  });
+});
 
 if ('serviceWorker' in navigator) {
-    navigator.serviceWorker.register('../../../assets/service-worker.js')
+    navigator.serviceWorker.register('../../../scripts/service-worker.js')
     .then(reg => console.log('Service Worker registrado!', reg))
     .catch(err => console.log('Erro ao registrar o Service Worker', err));
-
 }
