@@ -5,7 +5,7 @@ function isIOS() {
 }
 
 document.addEventListener('DOMContentLoaded', function () {
-    const installBtn = document.querySelector('.install-btn');
+    const downloadBtn = document.querySelector('.install-btn');
     const modal = document.getElementById('install-modal');
 
     window.addEventListener('beforeinstallprompt', (e) => {
@@ -14,24 +14,16 @@ document.addEventListener('DOMContentLoaded', function () {
         deferredPrompt = e;
     });
 
-    installBtn.addEventListener('click', () => {
+    downloadBtn.addEventListener('click', () => {
         if (isIOS()) {
             console.log('Dispositivo iOS detectado');
             modal.style.display = 'flex';
-        } else if (deferredPrompt) {
-            console.log('Dispositivo com suporte detectado. Mostrando prompt de instalação...');
-            deferredPrompt.prompt();
-            deferredPrompt.userChoice.then(choiceResult => {
-                if (choiceResult.outcome === 'accepted') {
-                    console.log('Usuário aceitou a instalação');
-                } else {
-                    console.log('Usuário recusou a instalação');
-                }
-                deferredPrompt = null;
-            });
+        } else if (/android/i.test(navigator.userAgent)) {
+            console.log('Android detectado. Redirecionando para o APK...');
+            window.location.href = "assets/downloads/app-release.apk";
         } else {
-            console.log('beforeinstallprompt não foi disparado ou já foi usado');
-            alert('Este app não pode ser instalado agora. Tente novamente mais tarde ou use outro navegador.');
+            console.log('Dispositivo Desktop detectado');
+            alert('Para baixar o aplicativo, acesse esta página pelo seu celular.');
         }
     });
 

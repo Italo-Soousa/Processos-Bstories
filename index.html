@@ -18,6 +18,7 @@
             <input type="text" id="username" placeholder="Usuário" required>
             <input type="password" id="password" placeholder="Senha" required>
             <button type="submit">Entrar</button>
+            <button type="button" class="download-btn">Baixar Aplicativo</button>
             <p id="error-message"></p>
         </form>
     </div>
@@ -25,5 +26,14 @@
     <div class="img"><img src="assets/imagens/IDV_B.stories_Versão06 (2).png" alt=""></div>
 
     <script src="scripts/login.js"></script>
+
+<div id="install-modal" style="display: none;">
+  <div class="modal-content" style="background: white; padding: 20px; border-radius: 10px; max-width: 300px; margin: auto; text-align: center;">
+    <p>O app ainda não está disponível para iOS. Em breve!</p>
+    <button onclick="fecharModal()" style="margin-top: 10px;">Fechar</button>
+  </div>
+</div>
+
+<script src="scripts/botaoDownload.js"></script>
 </body>
 </html>
