@@ -1,7 +1,7 @@
 {
     "name": "B.stories Processos",
     "short_name": "B.stories",
-    "start_url": ".",
+    "start_url": "/index.html",
     "display": "standalone",
     "background_color": "#ffffff",
     "theme_color": "#5e2b2b",
