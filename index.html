@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
     <link rel="stylesheet" href="assets/CSS/pages/login.css">
-    
+    <link rel="manifest" href="assets/manifest.json">
 </head>
 <body>
 
@@ -39,28 +39,10 @@
 <script>
   if ("serviceWorker" in navigator) {
     navigator.serviceWorker
-      .register("service-worker.js")
+      .register("scripts/service-worker.js")
       .then(() => console.log("Service Worker registrado com sucesso."))
       .catch(err => console.log("Erro ao registrar Service Worker:", err));
   }
-</script>
-<script>
-  let deferredPrompt;
-
-  window.addEventListener('beforeinstallprompt', (e) => {
-    e.preventDefault();
-    deferredPrompt = e;
-    document.querySelector('.download-btn').style.display = 'inline-block';
-  });
-
-  document.querySelector('.download-btn').addEventListener('click', async () => {
-    if (deferredPrompt) {
-      deferredPrompt.prompt();
-      const { outcome } = await deferredPrompt.userChoice;
-      console.log(`Instalação: ${outcome}`);
-      deferredPrompt = null;
-    }
-  });
 </script>
 </body>
 </html>

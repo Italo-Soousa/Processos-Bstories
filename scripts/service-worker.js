@@ -1,41 +1,34 @@
-const CACHE_NAME = "bstories-cache-v1";
-const urlsToCache = [
-  "/index.html",
-  "/assets/CSS/pages/login.css",
-  "/assets/CSS/layout/header.css",
-  "/assets/CSS/layout/footer.css",
-  "/assets/imagens/logo.png",
-  "/assets/imagens/icon-192.png",
-  "/assets/imagens/icon-512.png"
-];
+importScripts('https://storage.googleapis.com/workbox-cdn/releases/6.5.4/workbox-sw.js');
 
-self.addEventListener("install", event => {
-  event.waitUntil(
-    caches.open(CACHE_NAME).then(cache => {
-      return cache.addAll(urlsToCache);
+if (workbox) {
+  console.log("Workbox carregado com sucesso ✅");
+
+  // Cache para arquivos estáticos (HTML, CSS, JS, imagens)
+  workbox.routing.registerRoute(
+    ({request}) =>
+      request.destination === 'document' ||
+      request.destination === 'script' ||
+      request.destination === 'style' ||
+      request.destination === 'image',
+    new workbox.strategies.StaleWhileRevalidate({
+      cacheName: 'bstories-static-cache',
     })
   );
-});
 
-self.addEventListener("fetch", event => {
-  event.respondWith(
-    caches.match(event.request).then(response => {
-      return response || fetch(event.request);
+  // Cache para fontes do Google
+  workbox.routing.registerRoute(
+    /^https:\/\/fonts\.(?:googleapis|gstatic)\.com\/.*/i,
+    new workbox.strategies.CacheFirst({
+      cacheName: 'google-fonts-cache',
+      plugins: [
+        new workbox.expiration.ExpirationPlugin({
+          maxEntries: 20,
+          maxAgeSeconds: 60 * 60 * 24 * 365, // 1 ano
+        }),
+      ],
     })
   );
-});
 
-self.addEventListener("activate", event => {
-  const cacheWhitelist = [CACHE_NAME];
-  event.waitUntil(
-    caches.keys().then(cacheNames => {
-      return Promise.all(
-        cacheNames.map(cacheName => {
-          if (!cacheWhitelist.includes(cacheName)) {
-            return caches.delete(cacheName);
-          }
-        })
-      );
-    })
-  );
-});
+} else {
+  console.log("Workbox não foi carregado ❌");
+}
